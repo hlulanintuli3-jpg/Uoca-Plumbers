@@ -1,0 +1,1135 @@
+UOCA PLUMBERS — FULL SOURCE BUNDLE
+======================================================================
+
+NOTE: This is a multi-file TanStack Start app. It cannot run as a
+single .tsx file — split each section back into its own file path
+(shown in the header) inside a TanStack Start project.
+
+
+======================================================================
+FILE: src/styles.css
+======================================================================
+
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-primary-glow: var(--primary-glow);
+  --color-primary-deep: var(--primary-deep);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.99 0.005 240);
+  --foreground: oklch(0.18 0.04 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 250);
+  --primary: oklch(0.52 0.22 252);
+  --primary-foreground: oklch(0.99 0.005 240);
+  --primary-glow: oklch(0.66 0.2 245);
+  --primary-deep: oklch(0.32 0.13 255);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.25 0.06 255);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.48 0.03 252);
+  --accent: oklch(0.94 0.04 240);
+  --accent-foreground: oklch(0.32 0.13 255);
+  --destructive: oklch(0.6 0.24 27);
+  --destructive-foreground: oklch(0.99 0.005 240);
+  --border: oklch(0.9 0.015 250);
+  --input: oklch(0.9 0.015 250);
+  --ring: oklch(0.52 0.22 252);
+  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.13 255) 0%, oklch(0.52 0.22 252) 60%, oklch(0.66 0.2 245) 100%);
+  --gradient-subtle: linear-gradient(180deg, oklch(0.99 0.005 240) 0%, oklch(0.96 0.02 245) 100%);
+  --shadow-elegant: 0 20px 50px -20px oklch(0.32 0.13 255 / 0.35);
+  --shadow-soft: 0 8px 24px -8px oklch(0.32 0.13 255 / 0.18);
+  --shadow-glow: 0 0 60px oklch(0.66 0.2 245 / 0.4);
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-subtle { background: var(--gradient-subtle); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .transition-smooth { transition: var(--transition-smooth); }
+  .text-balance { text-wrap: balance; }
+}
+
+
+======================================================================
+FILE: src/router.tsx
+======================================================================
+
+import { createRouter, useRouter } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  const router = useRouter();
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8 text-destructive"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+            />
+          </svg>
+        </div>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">Something went wrong</h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          An unexpected error occurred. Please try again.
+        </p>
+        {import.meta.env.DEV && error.message && (
+          <pre className="mt-4 max-h-40 overflow-auto rounded-md bg-muted p-3 text-left font-mono text-xs text-destructive">
+            {error.message}
+          </pre>
+        )}
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+          >
+            Go home
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const getRouter = () => {
+  const router = createRouter({
+    routeTree,
+    context: {},
+    scrollRestoration: true,
+    defaultPreloadStaleTime: 0,
+    defaultErrorComponent: DefaultErrorComponent,
+  });
+
+  return router;
+};
+
+
+======================================================================
+FILE: src/routes/__root.tsx
+======================================================================
+
+import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+
+import appCss from "../styles.css?url";
+
+function NotFoundComponent() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Go home
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Uoca Plumbers — Trusted Plumbing in Gauteng" },
+      { name: "description", content: "Licensed, insured plumbers serving Johannesburg & Gauteng. 24/7 emergency repairs, geyser installs, drain unblocking & maintenance." },
+      { name: "author", content: "Uoca Plumbers" },
+      { property: "og:title", content: "Uoca Plumbers — Trusted Plumbing in Gauteng" },
+      { property: "og:description", content: "24/7 emergency plumbing across Johannesburg. Geysers, leaks, drains, maintenance." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+    ],
+  }),
+  shellComponent: RootShell,
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+});
+
+function RootShell({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+function RootComponent() {
+  return (
+    <div className="flex min-h-screen flex-col">
+      <SiteHeader />
+      <main className="flex-1"><Outlet /></main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+
+======================================================================
+FILE: src/routes/index.tsx
+======================================================================
+
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, ShieldCheck, Clock, Wrench, Droplets, Flame, Wind, CheckCircle2, Star } from "lucide-react";
+import heroImage from "@/assets/hero-plumber.jpg";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Uoca Plumbers — 24/7 Plumbing in Johannesburg & Gauteng" },
+      { name: "description", content: "Licensed plumbers for emergencies, geyser installs, leak detection & drain unblocking. Fast response across Gauteng. Call 010 123 4567." },
+      { property: "og:title", content: "Uoca Plumbers — 24/7 Plumbing in Johannesburg" },
+      { property: "og:description", content: "Fast, fair, fully insured plumbing across Gauteng." },
+      { property: "og:image", content: heroImage },
+      { name: "twitter:image", content: heroImage },
+    ],
+  }),
+  component: Index,
+});
+
+function Index() {
+  return (
+    <>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-gradient-subtle">
+        <div className="absolute inset-0 -z-10 opacity-[0.04]" style={{
+          backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
+          backgroundSize: "24px 24px",
+        }} />
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" /> Available 24/7
+            </span>
+            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
+              Plumbing you can <span className="bg-gradient-hero bg-clip-text text-transparent">actually trust.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-muted-foreground text-balance">
+              From midnight burst pipes to full bathroom installs — Uoca Plumbers
+              delivers fast, fair, fully-insured service across Gauteng.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-lg bg-gradient-hero px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-smooth hover:shadow-glow"
+              >
+                Get a free quote
+                <ArrowRight className="h-4 w-4 transition-smooth group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-smooth hover:border-primary hover:text-primary"
+              >
+                View services
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> PIRB registered</span>
+              <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> 60-min response</span>
+              <span className="flex items-center gap-2"><Star className="h-4 w-4 text-primary" /> 4.9 / 5 rating</span>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-hero opacity-20 blur-3xl" />
+            <div className="overflow-hidden rounded-2xl border border-border shadow-elegant">
+              <img
+                src={heroImage}
+                alt="Uoca Plumber installing a chrome sink trap"
+                width={1536}
+                height={1280}
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-6 hidden rounded-xl border border-border bg-card p-4 shadow-soft sm:block">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">2,400+ jobs</p>
+                  <p className="text-xs text-muted-foreground">Completed across Gauteng</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES TEASER */}
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">What we do</p>
+            <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl">Every pipe, every problem.</h2>
+          </div>
+          <Link to="/services" className="hidden text-sm font-semibold text-primary hover:underline sm:inline">All services →</Link>
+        </div>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { Icon: Droplets, title: "Leak detection", desc: "Pinpoint hidden leaks without tearing up walls." },
+            { Icon: Flame, title: "Geyser repair", desc: "Same-day installs and replacements, all brands." },
+            { Icon: Wind, title: "Drain unblocking", desc: "High-pressure jetting for stubborn blockages." },
+            { Icon: Wrench, title: "Maintenance", desc: "Annual checkups that prevent costly damage." },
+          ].map(({ Icon, title, desc }) => (
+            <div key={title} className="group rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-1 hover:border-primary hover:shadow-elegant">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-hero shadow-soft transition-smooth group-hover:shadow-glow">
+                <Icon className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <h3 className="mt-5 font-display text-lg font-semibold">{title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="bg-gradient-subtle py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary">Why Uoca</p>
+              <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl text-balance">
+                Honest pricing. Real plumbers. Zero surprises.
+              </h2>
+              <p className="mt-5 text-muted-foreground">
+                We've spent ten years building a team that shows up when they say
+                they will, fixes it right the first time, and leaves your home
+                cleaner than they found it.
+              </p>
+            </div>
+            <ul className="space-y-4">
+              {[
+                "Up-front quotes — no hidden call-out fees",
+                "Fully insured & PIRB-certified technicians",
+                "12-month workmanship guarantee on every job",
+                "Transparent SMS & WhatsApp updates",
+              ].map((point) => (
+                <li key={point} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
+                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-primary" />
+                  <span className="text-sm font-medium">{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-10 shadow-elegant sm:p-16">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary-foreground/10 blur-3xl" />
+          <div className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="font-display text-3xl font-bold text-primary-foreground sm:text-4xl text-balance">
+                Got a plumbing problem? Let's fix it today.
+              </h2>
+              <p className="mt-3 max-w-xl text-primary-foreground/80">
+                Call now or send a quick message. Most quotes back within the hour.
+              </p>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-background px-6 py-3.5 text-sm font-semibold text-primary shadow-soft transition-smooth hover:bg-accent"
+            >
+              Book a plumber <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+
+======================================================================
+FILE: src/routes/services.tsx
+======================================================================
+
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Droplets, Flame, Wind, Wrench, Bath, Building2, ShowerHead, Gauge, ArrowRight } from "lucide-react";
+
+export const Route = createFileRoute("/services")({
+  head: () => ({
+    meta: [
+      { title: "Plumbing Services — Uoca Plumbers" },
+      { name: "description", content: "Geyser repairs, leak detection, drain unblocking, bathroom installs, commercial maintenance and 24/7 emergency plumbing across Gauteng." },
+      { property: "og:title", content: "Plumbing Services — Uoca Plumbers" },
+      { property: "og:description", content: "Residential & commercial plumbing services across Gauteng." },
+    ],
+  }),
+  component: ServicesPage,
+});
+
+const services = [
+  { Icon: Droplets, title: "Leak detection & repair", desc: "Acoustic and thermal-imaging leak detection — no unnecessary breaking of walls or tiles." },
+  { Icon: Flame, title: "Geyser installation", desc: "Supply, installation and replacement of electric, solar, and heat-pump geysers — all major brands." },
+  { Icon: Wind, title: "Drain unblocking", desc: "High-pressure jetting and CCTV inspection for kitchens, bathrooms and main lines." },
+  { Icon: Bath, title: "Bathroom renovations", desc: "Full bathroom installs from rough-in to finish, project-managed and tile-ready." },
+  { Icon: ShowerHead, title: "Taps, mixers & fittings", desc: "Replacement of taps, mixers, toilets, basins and shower fittings with quality SABS-approved parts." },
+  { Icon: Gauge, title: "Water pressure & pumps", desc: "Pressure regulation, booster pumps, and pump repairs for homes and complexes." },
+  { Icon: Building2, title: "Commercial maintenance", desc: "Scheduled maintenance contracts for offices, retail and body corporates." },
+  { Icon: Wrench, title: "24/7 emergency callouts", desc: "Burst pipes, blocked drains, no hot water — whenever, we're on the way." },
+];
+
+function ServicesPage() {
+  return (
+    <>
+      <section className="border-b border-border bg-gradient-subtle">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Services</p>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl text-balance max-w-3xl">
+            Every plumbing service, under one trusted roof.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
+            From a dripping tap to a full bathroom renovation, our certified team
+            handles it with the same care and precision.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ Icon, title, desc }) => (
+            <article key={title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 transition-smooth hover:-translate-y-1 hover:border-primary hover:shadow-elegant">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-hero shadow-soft">
+                <Icon className="h-6 w-6 text-primary-foreground" />
+              </div>
+              <h2 className="mt-5 font-display text-xl font-semibold">{title}</h2>
+              <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-3xl border border-border bg-gradient-hero p-10 text-primary-foreground shadow-elegant sm:p-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="font-display text-2xl font-bold sm:text-3xl">Don't see what you need?</h2>
+              <p className="mt-2 text-primary-foreground/80">If it involves water, we probably do it. Just ask.</p>
+            </div>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-background px-6 py-3 text-sm font-semibold text-primary shadow-soft transition-smooth hover:bg-accent">
+              Ask about your job <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+
+======================================================================
+FILE: src/routes/about.tsx
+======================================================================
+
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ShieldCheck, Heart, Clock, Award } from "lucide-react";
+
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "About Uoca Plumbers — Family-run Plumbers in Gauteng" },
+      { name: "description", content: "Ten years of honest plumbing across Johannesburg. Meet the family-run team behind Uoca Plumbers — PIRB-registered, fully insured, neighbourhood-trusted." },
+      { property: "og:title", content: "About Uoca Plumbers" },
+      { property: "og:description", content: "A decade of honest plumbing across Gauteng." },
+    ],
+  }),
+  component: AboutPage,
+});
+
+const values = [
+  { Icon: ShieldCheck, title: "Integrity first", desc: "We quote up front and stand behind every job in writing." },
+  { Icon: Heart, title: "Treat homes well", desc: "Drop sheets down, boots off, and a clean exit — every time." },
+  { Icon: Clock, title: "Show up on time", desc: "If we're running late, you'll hear from us first — not the other way around." },
+  { Icon: Award, title: "Do it once, properly", desc: "12-month workmanship guarantee on every install and repair." },
+];
+
+function AboutPage() {
+  return (
+    <>
+      <section className="border-b border-border bg-gradient-subtle">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Our story</p>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl text-balance max-w-3xl">
+            A decade of honest plumbing — built one neighbourhood at a time.
+          </h1>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-3">
+          <div className="lg:col-span-2 space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              Uoca Plumbers started in 2015 with one van, one toolbox, and a
+              simple promise: do the job right and treat people fairly. Ten
+              years later we're still family-run, but we've grown into a team
+              of certified plumbers serving thousands of homes and businesses
+              across Gauteng.
+            </p>
+            <p>
+              We believe plumbing shouldn't feel stressful. That means clear
+              quotes, friendly technicians who explain what they're doing, and
+              the kind of after-service support most companies have forgotten.
+            </p>
+            <p>
+              Whether it's a 2 a.m. burst pipe or a planned bathroom renovation,
+              you get the same crew, the same standard, the same straight talk.
+            </p>
+          </div>
+          <div className="rounded-3xl border border-border bg-gradient-hero p-8 text-primary-foreground shadow-elegant">
+            <p className="font-display text-5xl font-bold">10+</p>
+            <p className="mt-1 text-sm uppercase tracking-wider text-primary-foreground/80">Years in business</p>
+            <div className="mt-6 h-px bg-primary-foreground/20" />
+            <p className="mt-6 font-display text-5xl font-bold">2,400+</p>
+            <p className="mt-1 text-sm uppercase tracking-wider text-primary-foreground/80">Jobs completed</p>
+            <div className="mt-6 h-px bg-primary-foreground/20" />
+            <p className="mt-6 font-display text-5xl font-bold">4.9★</p>
+            <p className="mt-1 text-sm uppercase tracking-wider text-primary-foreground/80">Customer rating</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-subtle py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-bold sm:text-4xl">What we stand for</h2>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map(({ Icon, title, desc }) => (
+              <div key={title} className="rounded-2xl border border-border bg-card p-6 transition-smooth hover:border-primary hover:shadow-soft">
+                <Icon className="h-7 w-7 text-primary" />
+                <h3 className="mt-4 font-display text-lg font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12">
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-soft transition-smooth hover:bg-primary-deep">
+              Work with us
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+
+======================================================================
+FILE: src/routes/contact.tsx
+======================================================================
+
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact Uoca Plumbers — Get a Free Quote" },
+      { name: "description", content: "Call 010 123 4567 or send a message. Free quotes, fast response across Johannesburg & Gauteng. 24/7 emergency line." },
+      { property: "og:title", content: "Contact Uoca Plumbers" },
+      { property: "og:description", content: "Free quotes & 24/7 emergency plumbing in Gauteng." },
+    ],
+  }),
+  component: ContactPage,
+});
+
+function ContactPage() {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <>
+      <section className="border-b border-border bg-gradient-subtle">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Contact</p>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-6xl text-balance max-w-3xl">
+            Let's get your water flowing again.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
+            Call us for emergencies, or send a quick message and we'll come back
+            to you with a free quote — usually within the hour.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-5">
+          <div className="space-y-4 lg:col-span-2">
+            {[
+              { Icon: Phone, label: "Phone (24/7)", value: "010 123 4567", href: "tel:+27101234567" },
+              { Icon: Mail, label: "Email", value: "hello@uocaplumbers.co.za", href: "mailto:hello@uocaplumbers.co.za" },
+              { Icon: MapPin, label: "Service area", value: "Johannesburg & greater Gauteng" },
+              { Icon: Clock, label: "Hours", value: "Mon–Sat 7:00–18:00 · Emergencies 24/7" },
+            ].map(({ Icon, label, value, href }) => (
+              <a
+                key={label}
+                href={href ?? "#"}
+                className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 transition-smooth hover:border-primary hover:shadow-soft"
+              >
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-hero">
+                  <Icon className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
+                  <p className="mt-1 font-medium">{value}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <form
+            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+            className="rounded-3xl border border-border bg-card p-8 shadow-soft lg:col-span-3"
+          >
+            {sent ? (
+              <div className="flex flex-col items-center text-center py-10">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                  <CheckCircle2 className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="mt-5 font-display text-2xl font-semibold">Message received!</h3>
+                <p className="mt-2 text-muted-foreground max-w-sm">
+                  Thanks — one of our plumbers will be in touch shortly. For
+                  emergencies, please call 010 123 4567.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="font-display text-2xl font-bold">Request a free quote</h2>
+                <p className="mt-1 text-sm text-muted-foreground">No call-out fee for quotes.</p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <Field label="Full name" name="name" required />
+                  <Field label="Phone number" name="phone" type="tel" required />
+                  <Field label="Email" name="email" type="email" className="sm:col-span-2" />
+                  <Field label="Suburb" name="suburb" className="sm:col-span-2" />
+                </div>
+                <div className="mt-4">
+                  <label className="text-sm font-medium">Describe the job</label>
+                  <textarea
+                    rows={5}
+                    required
+                    className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
+                    placeholder="e.g. Geyser leaking in the ceiling, started this morning…"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-hero px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-smooth hover:shadow-glow sm:w-auto"
+                >
+                  Send message <Send className="h-4 w-4" />
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Field({ label, name, type = "text", required, className }: {
+  label: string; name: string; type?: string; required?: boolean; className?: string;
+}) {
+  return (
+    <div className={className}>
+      <label htmlFor={name} className="text-sm font-medium">{label}{required && <span className="text-primary"> *</span>}</label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-sm outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20"
+      />
+    </div>
+  );
+}
+
+
+======================================================================
+FILE: src/components/SiteHeader.tsx
+======================================================================
+
+import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X, Phone, Droplets } from "lucide-react";
+
+const nav = [
+  { to: "/", label: "Home" },
+  { to: "/services", label: "Services" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
+export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-hero shadow-soft transition-smooth group-hover:shadow-glow">
+            <Droplets className="h-5 w-5 text-primary-foreground" />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-lg font-bold tracking-tight">Uoca Plumbers</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Trusted in SA</span>
+          </div>
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-1">
+          {nav.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="px-4 py-2 text-sm font-medium text-muted-foreground rounded-md transition-smooth hover:text-foreground hover:bg-accent"
+              activeProps={{ className: "px-4 py-2 text-sm font-medium rounded-md text-primary bg-accent" }}
+              activeOptions={{ exact: item.to === "/" }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="tel:+27101234567"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-smooth hover:bg-primary-deep hover:shadow-elegant"
+          >
+            <Phone className="h-4 w-4" /> 010 123 4567
+          </a>
+        </div>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border"
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden border-t border-border bg-background">
+          <nav className="flex flex-col p-4 gap-1">
+            {nav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className="px-4 py-3 rounded-md text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"
+                activeProps={{ className: "px-4 py-3 rounded-md text-sm font-medium text-primary bg-accent" }}
+                activeOptions={{ exact: item.to === "/" }}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href="tel:+27101234567"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground"
+            >
+              <Phone className="h-4 w-4" /> Call 010 123 4567
+            </a>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}
+
+
+======================================================================
+FILE: src/components/SiteFooter.tsx
+======================================================================
+
+import { Link } from "@tanstack/react-router";
+import { Droplets, Phone, Mail, MapPin } from "lucide-react";
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-24 border-t border-border bg-gradient-subtle">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid gap-10 md:grid-cols-4">
+          <div className="md:col-span-2">
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-hero">
+                <Droplets className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <span className="font-display text-lg font-bold">Uoca Plumbers</span>
+            </Link>
+            <p className="mt-4 max-w-md text-sm text-muted-foreground">
+              Reliable plumbing for homes and businesses across Gauteng. Licensed,
+              insured, and on call 24/7 for emergencies.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold">Company</h4>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <li><Link to="/services" className="hover:text-foreground">Services</Link></li>
+              <li><Link to="/about" className="hover:text-foreground">About</Link></li>
+              <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold">Contact</h4>
+            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <li className="flex items-start gap-2"><Phone className="h-4 w-4 mt-0.5 text-primary" /> 010 123 4567</li>
+              <li className="flex items-start gap-2"><Mail className="h-4 w-4 mt-0.5 text-primary" /> hello@uocaplumbers.co.za</li>
+              <li className="flex items-start gap-2"><MapPin className="h-4 w-4 mt-0.5 text-primary" /> Johannesburg, Gauteng</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
+          <p>© {new Date().getFullYear()} Uoca Plumbers. All rights reserved.</p>
+          <p>PIRB registered · Fully insured</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+
+======================================================================
+FILE: package.json
+======================================================================
+
+{
+  "name": "tanstack_start_ts",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "build:dev": "vite build --mode development",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@cloudflare/vite-plugin": "^1.25.5",
+    "@hookform/resolvers": "^5.2.2",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-aspect-ratio": "^1.1.8",
+    "@radix-ui/react-avatar": "^1.1.11",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-collapsible": "^1.1.12",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-menubar": "^1.1.16",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.8",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.8",
+    "@radix-ui/react-slider": "^1.3.6",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@tailwindcss/vite": "^4.2.1",
+    "@tanstack/react-query": "^5.83.0",
+    "@tanstack/react-router": "^1.168.0",
+    "@tanstack/react-start": "^1.167.14",
+    "@tanstack/router-plugin": "^1.167.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.0",
+    "react-day-picker": "^9.14.0",
+    "react-dom": "^19.2.0",
+    "react-hook-form": "^7.71.2",
+    "react-resizable-panels": "^4.6.5",
+    "recharts": "^2.15.4",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.2.1",
+    "tw-animate-css": "^1.3.4",
+    "vaul": "^1.1.2",
+    "vite-tsconfig-paths": "^6.0.2",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@lovable.dev/vite-tanstack-config": "^1.4.0",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^15.15.0",
+    "prettier": "^3.7.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^7.3.1"
+  }
+}
+
+
+======================================================================
+FILE: vite.config.ts
+======================================================================
+
+// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
+// or the app will break with duplicate plugins:
+//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, cloudflare (build-only),
+//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
+//     error logger plugins, and sandbox detection (port/host/strictPort).
+// You can pass additional config via defineConfig({ vite: { ... } }) if needed.
+import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+
+export default defineConfig();
+
+
+======================================================================
+FILE: tsconfig.json
+======================================================================
+
+{
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "eslint.config.js"],
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "noEmit": true,
+
+    /* Linting */
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+
+
+======================================================================
+FILE: components.json
+======================================================================
+
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "css": "src/styles.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "rtl": false,
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
+}
+
